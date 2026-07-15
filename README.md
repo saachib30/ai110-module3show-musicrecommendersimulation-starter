@@ -11,23 +11,54 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This version of the Music Recommender Simulation uses a simple content-based recommendation system. Instead of using data from millions of users, it compares each song’s attributes to a user’s taste profile. The recommender looks at features such as genre, mood, energy, and acousticness, then gives each song a score based on how closely it matches the user. The highest-scoring songs are returned as personalized recommendations.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommendation systems use data about users and content to predict what someone might enjoy next. Platforms like Spotify, YouTube, and TikTok often use a mix of collaborative filtering and content-based filtering. Collaborative filtering looks at patterns from similar users, such as likes, skips, playlists, or watch history. Content-based filtering looks at the item itself, such as a song’s genre, mood, tempo, energy, or acousticness.
 
-Some prompts to answer:
+My project focuses on a simpler content-based recommender. Each song is represented with attributes, and each user is represented with a taste profile. The recommender compares the song data to the user profile, calculates a weighted score, and then ranks the songs from strongest match to weakest match.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+### Features Used
 
-You can include a simple diagram or bullet list if helpful.
+Each `Song` uses these features:
+
+- `id`
+- `title`
+- `artist`
+- `genre`
+- `mood`
+- `energy`
+- `tempo_bpm`
+- `valence`
+- `danceability`
+- `acousticness`
+
+Each `UserProfile` stores these preferences:
+
+- `favorite_genre`
+- `favorite_mood`
+- `target_energy`
+- `likes_acoustic`
+
+### Algorithm Recipe
+
+The recommender uses a 100-point scoring system:
+
+- Genre match: 35 points
+- Mood match: 30 points
+- Energy closeness: 20 points
+- Acousticness preference: 15 points
+
+Genre and mood are weighted most heavily because they strongly define the overall type and feeling of a song. Energy is scored by closeness to the user’s target energy, because a higher energy value is not always better. For example, a user who likes calm music should not automatically receive high-energy songs. Acousticness is included because some users may prefer more acoustic, natural-sounding music while others may prefer less acoustic or more produced music.
+
+### Scoring Rule vs. Ranking Rule
+
+A scoring rule calculates how well one song matches one user profile. For example, one song may receive points for matching the user’s favorite genre, matching the user’s favorite mood, having energy close to the user’s target energy, and matching the user’s acoustic preference.
+
+A ranking rule happens after all songs have been scored. The recommender sorts the songs from highest score to lowest score and returns the top results. This means the scoring rule decides the quality of one match, while the ranking rule decides the final order of recommendations.
 
 ---
 
