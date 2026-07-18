@@ -48,6 +48,8 @@ Each `UserProfile` stores these preferences:
 
 ### Phase 2 Design Plan
 
+### Phase 2 Design Plan
+
 The recommender will use the song catalog in `data/songs.csv`. Each song includes features such as `genre`, `mood`, `energy`, `tempo_bpm`, `valence`, `danceability`, and `acousticness`. I expanded the dataset with additional songs so the recommender has a wider range of genres and moods to compare.
 
 The main user profile for testing will be:
