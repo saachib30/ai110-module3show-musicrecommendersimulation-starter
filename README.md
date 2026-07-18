@@ -11,7 +11,7 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This version of the Music Recommender Simulation uses a simple content-based recommendation system. Instead of using data from millions of users, it compares each song’s attributes to a user’s taste profile. The recommender looks at features such as genre, mood, energy, and acousticness, then gives each song a score based on how closely it matches the user. The highest-scoring songs are returned as personalized recommendations.
 
 ---
 
@@ -19,16 +19,49 @@ Replace this paragraph with your own summary of what your version does.
 
 Explain your design in plain language.
 
-Some prompts to answer:
+---
+Real-world recommendation systems use data about users and content to predict what someone might enjoy next. Platforms like Spotify, YouTube, and TikTok often use a mix of collaborative filtering and content-based filtering. Collaborative filtering looks at patterns from similar users, such as likes, skips, playlists, or watch history. Content-based filtering looks at the item itself, such as a song’s genre, mood, tempo, energy, or acousticness.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+My project focuses on a simpler content-based recommender. Each song is represented with attributes, and each user is represented with a taste profile. The recommender compares the song data to the user profile, calculates a weighted score, and then ranks the songs from strongest match to weakest match.
 
-You can include a simple diagram or bullet list if helpful.
+### Features Used
 
+Each `Song` uses these features:
+
+- `id`
+- `title`
+- `artist`
+- `genre`
+- `mood`
+- `energy`
+- `tempo_bpm`
+- `valence`
+- `danceability`
+- `acousticness`
+
+Each `UserProfile` stores these preferences:
+
+- `favorite_genre`
+- `favorite_mood`
+- `target_energy`
+- `likes_acoustic`
+
+### Phase 2 Design Plan
+
+The recommender will use the song catalog in `data/songs.csv`. Each song includes features such as `genre`, `mood`, `energy`, `tempo_bpm`, `valence`, `danceability`, and `acousticness`. I expanded the dataset with additional songs so the recommender has a wider range of genres and moods to compare.
+
+The main user profile for testing will be:
+
+```python
+user_prefs = {
+    "genre": "pop",
+    "mood": "happy",
+    "energy": 0.8,
+    "likes_acoustic": False
+}
+
+
+```markdown
 ---
 
 ## Getting Started
