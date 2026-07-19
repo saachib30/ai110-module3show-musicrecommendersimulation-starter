@@ -128,18 +128,46 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
+## Sample Recommendation Output
 
+Default user profile:
+
+```python
+user_prefs = {
+    "genre": "pop",
+    "mood": "happy",
+    "energy": 0.8,
+    "likes_acoustic": False
+}
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
+
+Terminal output:
+
+```text
+Loaded songs: 18
+
+Top recommendations:
+
+Sunrise City - Score: 5.97
+Because: genre match (+2.0); mood match (+1.5); energy closeness (+1.5); non-acoustic preference (+1.0)
+
+Gym Hero - Score: 4.30
+Because: genre match (+2.0); energy closeness (+1.3); non-acoustic preference (+1.0)
+
+Rooftop Lights - Score: 3.94
+Because: mood match (+1.5); energy closeness (+1.4); non-acoustic preference (+1.0)
+
+Night Drive Loop - Score: 2.42
+Because: energy closeness (+1.4); non-acoustic preference (+1.0)
+
+Crystal Cascade - Score: 2.38
+Because: energy closeness (+1.4); non-acoustic preference (+1.0)
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+
+<img width="946" height="837" alt="image" src="https://github.com/user-attachments/assets/a35b2fc0-6bd8-46bb-9484-c0fd85fb7e57" />
+
 
 ---
 
