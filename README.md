@@ -283,6 +283,119 @@ Top 5 recommendations:
    Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
 
 
+### Weight Shift Experiment
+
+I tested a weight shift experiment where genre was reduced from `+2.0` to `+1.0`, while energy closeness was increased from up to `+1.5` to up to `+3.0`. This tested whether the recommender would become too focused on matching energy instead of matching the user's favorite genre.
+
+```text
+Loaded songs: 18
+============================================================
+Profile: High-Energy Pop
+Preferences: {'genre': 'pop', 'mood': 'happy', 'energy': 0.85, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Sunrise City - Neon Echo
+Score: 6.41
+Reasons: genre match (+1.0); mood match (+1.5); energy closeness (+2.9); non-acoustic preference (+1.0)
+
+2. Rooftop Lights - Indigo Parade
+Score: 5.23
+Reasons: mood match (+1.5); energy closeness (+2.7); non-acoustic preference (+1.0)
+
+3. Gym Hero - Max Pulse
+Score: 4.76
+Reasons: genre match (+1.0); energy closeness (+2.8); non-acoustic preference (+1.0)
+
+4. Crystal Cascade - Aurora Field
+Score: 3.91
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+5. Storm Runner - Voltline
+Score: 3.82
+Reasons: energy closeness (+2.8); non-acoustic preference (+1.0)
+
+============================================================
+Profile: Chill Lofi
+Preferences: {'genre': 'lofi', 'mood': 'chill', 'energy': 0.35, 'likes_acoustic': True}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Library Rain - Paper Lanterns
+Score: 6.50
+Reasons: genre match (+1.0); mood match (+1.5); energy closeness (+3.0); acoustic preference (+1.0)
+
+2. Midnight Coding - LoRoom
+Score: 6.29
+Reasons: genre match (+1.0); mood match (+1.5); energy closeness (+2.8); acoustic preference (+1.0)
+
+3. Spacewalk Thoughts - Orbit Bloom
+Score: 5.29
+Reasons: mood match (+1.5); energy closeness (+2.8); acoustic preference (+1.0)
+
+4. Focus Flow - LoRoom
+Score: 4.85
+Reasons: genre match (+1.0); energy closeness (+2.8); acoustic preference (+1.0)
+
+5. Coffee Shop Stories - Slow Stereo
+Score: 3.94
+Reasons: energy closeness (+2.9); acoustic preference (+1.0)
+
+============================================================
+Profile: Deep Intense Rock
+Preferences: {'genre': 'rock', 'mood': 'intense', 'energy': 0.9, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Storm Runner - Voltline
+Score: 6.47
+Reasons: genre match (+1.0); mood match (+1.5); energy closeness (+3.0); non-acoustic preference (+1.0)
+
+2. Gym Hero - Max Pulse
+Score: 5.41
+Reasons: mood match (+1.5); energy closeness (+2.9); non-acoustic preference (+1.0)
+
+3. Temple of Bass - Grimewave
+Score: 5.29
+Reasons: mood match (+1.5); energy closeness (+2.8); non-acoustic preference (+1.0)
+
+4. Crystal Cascade - Aurora Field
+Score: 3.94
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+5. Basement Riot - Static Teeth
+Score: 3.85
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+============================================================
+Profile: Conflicting Sad Energy
+Preferences: {'genre': 'lofi', 'mood': 'melancholy', 'energy': 0.9, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Storm Runner - Voltline
+Score: 3.97
+Reasons: energy closeness (+3.0); non-acoustic preference (+1.0)
+
+2. Crystal Cascade - Aurora Field
+Score: 3.94
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+3. Gym Hero - Max Pulse
+Score: 3.91
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+4. Basement Riot - Static Teeth
+Score: 3.85
+Reasons: energy closeness (+2.9); non-acoustic preference (+1.0)
+
+5. Temple of Bass - Grimewave
+Score: 3.79
+Reasons: energy closeness (+2.8); non-acoustic preference (+1.0)
+```
+
+The results became different, but not necessarily more accurate. Increasing the energy weight allowed songs with similar energy levels to rank higher even when they did not strongly match the user's genre. This showed that energy is useful for fine-tuning recommendations, but if it is weighted too heavily, it can overpower the user's main taste preference.
+
 ### Accuracy and surprises
 
 To evaluate the recommender, I ran it against several user profiles and reviewed the top results. **Many results made sense** — for example, the "Chill Lofi" profile (lofi, chill, low energy, likes acoustic) returned *Library Rain* as the #1 pick with a near-perfect score, matching on genre, mood, energy, and acousticness all at once. **One surprise/weakness** was that a few high-energy, non-acoustic songs (like *Crystal Cascade*) showed up across almost every profile, because they score points on energy and acousticness even when the genre and mood don't match — so they act like "filler" in the rankings. Overall the **weights feel mostly balanced**: genre (+2.0) and mood (+1.5) correctly dominate for clean matches, though genre can feel slightly too strong in edge cases, where an on-genre song outranks one that fits the mood and energy better. Finally, a key **limitation is the small dataset** — with only 18 songs, the same handful of tracks repeat across profiles and it's hard to judge the recommender's quality. A larger, more varied song list would give more meaningful and diverse recommendations.
