@@ -126,7 +126,6 @@ You can add more tests in `tests/test_recommender.py`.
 
 ---
 
-## Sample Recommendation Output
 
 ## Sample Recommendation Output
 
@@ -164,7 +163,7 @@ Crystal Cascade - Score: 2.38
 Because: energy closeness (+1.4); non-acoustic preference (+1.0)
 ```
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+**Screenshot or video** 
 
 <img width="946" height="837" alt="image" src="https://github.com/user-attachments/assets/a35b2fc0-6bd8-46bb-9484-c0fd85fb7e57" />
 
@@ -403,30 +402,24 @@ To evaluate the recommender, I ran it against several user profiles and reviewed
 
 ---
 
+
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
-
+- The recommender only uses a small song catalog, so the results are limited by the songs available in `data/songs.csv`.
+- The scoring system is simple and rule-based, so it cannot understand deeper music meaning like lyrics, artist style, or cultural context.
+- The system may create a filter bubble by repeatedly recommending songs that match the user's favorite genre and mood.
+- If one genre or mood appears more often in the dataset, those songs may have a better chance of appearing in the top recommendations.
+- The recommender does not use real user behavior such as likes, skips, saves, playlists, or listening history.
+- This project is useful for learning, but it should not be used as a real production music recommendation system.
 ---
 
 ## Reflection
 
-Read and complete `model_card.md`:
+## Reflection
 
-[**Model Card**](model_card.md)
+This project helped me understand how recommenders turn data into predictions. I learned that a song can be represented with features like genre, mood, energy, and acousticness, and a user can be represented with a taste profile. The recommender compares those two sets of data, assigns a score, and ranks the songs.
 
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
+I also learned that simple algorithms can still create bias. If the dataset has too many songs from one genre, or if one feature is weighted too strongly, the recommender may keep showing similar songs and create a filter bubble. AI tools helped me design and debug the system, but I had to check the logic myself to make sure the code matched my intended algorithm.
 
 
 
