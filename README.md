@@ -175,9 +175,113 @@ Because: energy closeness (+1.4); non-acoustic preference (+1.0)
 
 Use this section to document the experiments you ran. For example:
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+I tested the recommender with several different user profiles to see whether the scoring logic behaved as expected.
+
+Loaded songs: 18
+============================================================
+Profile: High-Energy Pop
+Preferences: {'genre': 'pop', 'mood': 'happy', 'energy': 0.85, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Sunrise City - Neon Echo
+   Score: 5.96
+   Reasons: genre match (+2.0); mood match (+1.5); energy closeness (+1.5); non-acoustic preference (+1.0)
+
+2. Gym Hero - Max Pulse
+   Score: 4.38
+   Reasons: genre match (+2.0); energy closeness (+1.4); non-acoustic preference (+1.0)
+
+3. Rooftop Lights - Indigo Parade
+   Score: 3.87
+   Reasons: mood match (+1.5); energy closeness (+1.4); non-acoustic preference (+1.0)
+
+4. Crystal Cascade - Aurora Field
+   Score: 2.46
+   Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
+
+5. Storm Runner - Voltline
+   Score: 2.41
+   Reasons: energy closeness (+1.4); non-acoustic preference (+1.0)
+
+============================================================
+Profile: Chill Lofi
+Preferences: {'genre': 'lofi', 'mood': 'chill', 'energy': 0.35, 'likes_acoustic': True}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Library Rain - Paper Lanterns
+   Score: 6.00
+   Reasons: genre match (+2.0); mood match (+1.5); energy closeness (+1.5); acoustic preference (+1.0)
+
+2. Midnight Coding - LoRoom
+   Score: 5.89
+   Reasons: genre match (+2.0); mood match (+1.5); energy closeness (+1.4); acoustic preference (+1.0)
+
+3. Focus Flow - LoRoom
+   Score: 4.42
+   Reasons: genre match (+2.0); energy closeness (+1.4); acoustic preference (+1.0)
+
+4. Spacewalk Thoughts - Orbit Bloom
+   Score: 3.90
+   Reasons: mood match (+1.5); energy closeness (+1.4); acoustic preference (+1.0)
+
+5. Coffee Shop Stories - Slow Stereo
+   Score: 2.47
+   Reasons: energy closeness (+1.5); acoustic preference (+1.0)
+
+============================================================
+Profile: Deep Intense Rock
+Preferences: {'genre': 'rock', 'mood': 'intense', 'energy': 0.9, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Storm Runner - Voltline
+   Score: 5.98
+   Reasons: genre match (+2.0); mood match (+1.5); energy closeness (+1.5); non-acoustic preference (+1.0)
+
+2. Gym Hero - Max Pulse
+   Score: 3.96
+   Reasons: mood match (+1.5); energy closeness (+1.5); non-acoustic preference (+1.0)
+
+3. Temple of Bass - Grimewave
+   Score: 3.90
+   Reasons: mood match (+1.5); energy closeness (+1.4); non-acoustic preference (+1.0)
+
+4. Crystal Cascade - Aurora Field
+   Score: 2.47
+   Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
+
+5. Basement Riot - Static Teeth
+   Score: 2.42
+   Reasons: energy closeness (+1.4); non-acoustic preference (+1.0)
+
+============================================================
+Profile: Conflicting Sad Energy
+Preferences: {'genre': 'lofi', 'mood': 'melancholy', 'energy': 0.9, 'likes_acoustic': False}
+------------------------------------------------------------
+Top 5 recommendations:
+
+1. Midnight Coding - LoRoom
+   Score: 2.78
+   Reasons: genre match (+2.0); energy closeness (+0.8)
+
+2. Focus Flow - LoRoom
+   Score: 2.75
+   Reasons: genre match (+2.0); energy closeness (+0.8)
+
+3. Library Rain - Paper Lanterns
+   Score: 2.67
+   Reasons: genre match (+2.0); energy closeness (+0.7)
+
+4. Storm Runner - Voltline
+   Score: 2.48
+   Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
+
+5. Crystal Cascade - Aurora Field
+   Score: 2.47
+   Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
+
 
 ---
 
