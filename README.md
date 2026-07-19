@@ -283,6 +283,11 @@ Top 5 recommendations:
    Reasons: energy closeness (+1.5); non-acoustic preference (+1.0)
 
 
+### Accuracy and surprises
+
+To evaluate the recommender, I ran it against several user profiles and reviewed the top results. **Many results made sense** — for example, the "Chill Lofi" profile (lofi, chill, low energy, likes acoustic) returned *Library Rain* as the #1 pick with a near-perfect score, matching on genre, mood, energy, and acousticness all at once. **One surprise/weakness** was that a few high-energy, non-acoustic songs (like *Crystal Cascade*) showed up across almost every profile, because they score points on energy and acousticness even when the genre and mood don't match — so they act like "filler" in the rankings. Overall the **weights feel mostly balanced**: genre (+2.0) and mood (+1.5) correctly dominate for clean matches, though genre can feel slightly too strong in edge cases, where an on-genre song outranks one that fits the mood and energy better. Finally, a key **limitation is the small dataset** — with only 18 songs, the same handful of tracks repeat across profiles and it's hard to judge the recommender's quality. A larger, more varied song list would give more meaningful and diverse recommendations.
+
+
 ---
 
 ## Limitations and Risks
