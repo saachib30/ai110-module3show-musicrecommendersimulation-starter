@@ -17,6 +17,8 @@ This version of the Music Recommender Simulation uses a simple content-based rec
 
 ## How The System Works
 
+How The System Works
+
 Real-world recommendation systems use data about users and content to predict what someone might enjoy next. Platforms like Spotify, YouTube, and TikTok often use a mix of collaborative filtering and content-based filtering. Collaborative filtering looks at patterns from similar users, such as likes, skips, playlists, or watch history. Content-based filtering looks at the item itself, such as a song’s genre, mood, tempo, energy, or acousticness.
 
 My project focuses on a simpler content-based recommender. Each song is represented with attributes, and each user is represented with a taste profile. The recommender compares the song data to the user profile, calculates a weighted score, and then ranks the songs from strongest match to weakest match.
@@ -88,7 +90,6 @@ Expected Biases
 
 This recommender may over-prioritize genre, which means it could ignore strong matches from other genres. For example, a happy, high-energy dance song might be ranked lower than a pop song simply because the user’s favorite genre is pop. It may also create a filter bubble by repeatedly recommending songs that are very similar to the user’s existing preferences.
 
-
 ## Getting Started
 
 ### Setup
@@ -99,6 +100,7 @@ This recommender may over-prioritize genre, which means it could ignore strong m
    python -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+   ```
 
 2. Install dependencies
 
